@@ -3,10 +3,16 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\User;
+use App\Models\Syslog;
+use App\Models\User;
+use App\Models\Customer;
+use App\Models\Profile;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+
+use Carbon\Carbon;
+
 
 class RegisterController extends Controller
 {
@@ -48,10 +54,17 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        $date = Carbon::now()->subYear(18);
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'first_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'username' => ['required', 'string', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            //'date_of_birth'=>['required','string','olderThan:18'],
+            'date_of_birth'=>['required','BeforeOrEqual:'.$date],
+            [
+                'date_of_birth.BeforeOrEqual'=> 'The :attribute must be 18 years or older.',
+            ]
         ]);
     }
 
@@ -63,10 +76,35 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
+
+        $user= User::create([
+            'name' => $data['first_name'].' '.$data['last_name'],
             'email' => $data['email'],
+            'username' => $data['username'],
             'password' => Hash::make($data['password']),
         ]);
+        Customer::create([
+            'date_registered'=>date('Y-m-d'),
+            'user_id'=>$user->id,
+        ]);
+        Profile::create([
+            'first_name'=>$data['first_name'],
+            'last_name'=>$data['last_name'],
+            'phone_number'=>$data['phone_number'],
+            'email'=>$data['email'],
+            //'sex'=>$data['sex'],
+            'address_line1'=>$data['address_line1'],
+            'address_line2'=>$data['address_line2'],
+            'date_registered'=>date('Y-m-d'),
+            'date_of_birth'=>date('Y-m-d'),
+            'user_id'=>$user->id,
+        ]);
+        Syslog::create([
+            'user_id'=> $user->id,
+            'log_type'=>'Customer Registration',
+            'activity'=>'Successful Customer Registration',
+            'user_ip'=>''
+        ]);
+        return $user;
     }
 }

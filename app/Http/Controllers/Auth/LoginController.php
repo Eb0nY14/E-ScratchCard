@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Syslog;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+
+use Auth;
 
 class LoginController extends Controller
 {
@@ -35,5 +38,24 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function username()
+    {
+        return 'username';
+    }
+
+    function authenticated( \Illuminate\Http\Request $request, $user)
+    {
+        /*$user->update([
+            'last_login_at' => Carbon::now()->toDateTimeString(),
+            'last_login_ip' => $request->getClientIp()
+        ]);*/
+        Syslog::create([
+            'user_id'=> Auth::user()->id,
+            'log_type'=>'Login',
+            'activity'=>'Successful login attempt',
+            'user_ip'=>$request->getClientIp()
+        ]);
     }
 }

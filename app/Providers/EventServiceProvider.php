@@ -7,6 +7,9 @@ use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
 
+use App\Models\Syslog;
+use Auth;
+
 class EventServiceProvider extends ServiceProvider
 {
     /**
@@ -30,5 +33,13 @@ class EventServiceProvider extends ServiceProvider
         parent::boot();
 
         //
+        Event::listen(\Illuminate\Auth\Events\Logout::class, function ($event) {
+            Syslog::create([
+                'user_id'=> Auth::user()->id,
+                'log_type'=>'Logout',
+                'activity'=>'User Logged out',
+                'user_ip'=>''
+            ]);
+        });
     }
 }
