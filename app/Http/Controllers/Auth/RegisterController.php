@@ -1,3 +1,14 @@
+<!--                         
+AUTHOR: LARAVEL FRAMEWORK.
+CODE TITLE: RegisterController.php
+DATE: 30 DECEMBER 2019
+
+PURPOSE: THIS PHP CODE ACTS AS Register CONTROLLER. EVERY USER REQUEST FOR REGISTRATION GETS TO THIS RegisterController FIRST BEFORE THE CONTROLLER 
+DESIGNATE IT TO THE APPROPRIATE CHANNEL I.E MODEL OR VIEW.    
+
+-->
+
+
 <?php
 
 namespace App\Http\Controllers\Auth;
@@ -23,7 +34,7 @@ class RegisterController extends Controller
     |
     | This controller handles the registration of new users as well as their
     | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
+    | provide this functionality.
     |
     */
 

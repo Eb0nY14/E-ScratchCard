@@ -1,3 +1,14 @@
+<!--
+AUTHOR: CHRISTIANA TEMIOLA
+CODE TITLE: Customer.php
+DATE: 08 DECEMBER 2019
+
+PURPOSE: THIS PHP FILE IS LOCATED IN THE Models FOLDER AND FORMS PART OF THE MVC ARCITECTURE.  THE Customer.php FILE IN THE Models FOLDER IS TIED TO THE CUSTOMER
+TABLE IN THE DATABASE AND IS CALLED WHENEVER THE CONTROLLER WANTS TO PERFORM ANY CRUD OPERATION ON CUSTOMER TABLE IN THE DATABASE.    
+
+ -->
+
+
 <?php
 
 namespace App\Models;
@@ -13,5 +24,4 @@ class Customer extends Model
         return $this->belongsTo('App\Models\User', 'user_id', 'id');
     }
 }
-
 

@@ -1,3 +1,14 @@
+<!--
+AUTHOR: LARAVEL BOOTSTRAP FRAMEWORK
+CODE TITLE: welcome.blade.php
+DATE: 06 APRIL 2020
+
+PURPOSE: THIS IS THE FIRST PAGE (WELCOME PAGE) THAT WILL BE DISPLAYED TO THE USER AS THE APPLICATION IS LAUNCHED ON THE BROWSER BEFORE REGISTRATION OR LOGGING IN
+CAN TAKE PLACE.  IT IS PART OF THE LARAVEL IN-BUILT TEMPLATE 
+
+ -->
+
+
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -126,7 +137,7 @@
                         </div>
                         <div class="col-xl-4 col-lg-4 col-sm-5 d-xl-flex d-lg-flex d-block align-items-center">
                             <div class="draw-time">
-                                <p>Game Will Be Draw -</p>
+                                <p>Game Will Be Drawn -</p>
                                 <ul class="date-counter timer" data-date="{{ $d->draw_date->format('d M Y H:i:s') }} GMT+01:00">
                                     <li>
                                         <span class="number day">{{ $d->draw_date->format('d') }}</span>
@@ -274,7 +285,7 @@
                 <div class="section-title text-center">
                     <span class="sub-title">Choose the Powerball</span>
                     <h2>Lottery Jackpot</h2>
-                    <p>You can easily buy lottery tickets online. With just a few clicks, you can buy a lucky ticket from the comfort of your home. Choose From Bellow.</p>
+                    <p>You can easily buy lottery tickets online. With just a few clicks, you can buy a lucky ticket from the comfort of your home. Choose From Below.</p>
                 </div>
             </div>
         </div>

@@ -5,6 +5,18 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ConfirmsPasswords;
 
+
+/*
+AUTHOR: LARAVEL FRAMEWORK.
+CODE TITLE: ConfirmPasswordController.php
+DATE: 30 DECEMBER 2019
+
+PURPOSE: THIS PHP CODE ACTS AS ConfirmPassword CONTROLLER. EVERY USER REQUEST TO ConfirmPassword GETS TO THIS ConfirmPasswordController FIRST BEFORE THE CONTROLLER
+DESIGNATE IT TO THE APPROPRIATE CHANNEL I.E MODEL OR VIEW.
+
+*/
+
+
 class ConfirmPasswordController extends Controller
 {
     /*
@@ -13,8 +25,8 @@ class ConfirmPasswordController extends Controller
     |--------------------------------------------------------------------------
     |
     | This controller is responsible for handling password confirmations and
-    | uses a simple trait to include the behavior. You're free to explore
-    | this trait and override any functions that require customization.
+    | uses a simple trait to include the behavior. This trait can be exploited
+    | and any function that requires customization can be overriden.
     |
     */
 

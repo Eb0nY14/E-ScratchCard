@@ -1,3 +1,13 @@
+<!-- 
+AUTHOR: LARAVEL FRAMEWORK 
+CODE TITLE: menu.blade.php
+DATE: 08 DECEMBER 2019
+    
+PURPOSE: THIS IS THE LARAVEL FRAMEWORK TEMPLATE USED FOR THE OVERALL LOOK AND FEEL OF THE APP. IT IS LOCATED IN THE resources/views/layouts/ folder. 
+
+ -->
+
+
 @php
 $test = "";
 @endphp
